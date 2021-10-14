@@ -10,7 +10,6 @@ future==0.16.0
 gunicorn==20.1.0
 idna==3.3
 jmespath==0.10.0
-mysqlclient==2.0.3
 pathspec==0.5.9
 psycopg2==2.9.1
 pypiwin32==223

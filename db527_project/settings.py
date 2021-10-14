@@ -25,7 +25,8 @@ SECRET_KEY = '8+4e@3iwg!qfb#xz68e=11a%=8)$5rh3%ui(8n5$gqkj5sj%ik'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['127.0.0.1', 'django-env.eba-2mfdefab.us-east-1.elasticbeanstalk.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -38,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'db527_web',
+    'gunicorn',
+	
 ]
 
 MIDDLEWARE = [

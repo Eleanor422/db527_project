@@ -10,7 +10,7 @@ future==0.16.0
 gunicorn==20.1.0
 idna==3.3
 jmespath==0.10.0
-mysqlclient @ file:///C:/Users/HSY/Desktop/Intern_TREC/mysqlclient-1.4.6-cp37-cp37m-win32.whl
+mysqlclient==1.4.6
 pathspec==0.5.9
 psycopg2==2.9.1
 pypiwin32==223

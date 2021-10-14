@@ -17,29 +17,38 @@ def search(request):
 
     if 'txt' in request.GET and request.GET['txt']:
         query = request.GET['txt']
-        columns, rows, elapsed_time = perform_query(db,query)
-        return render(request,'index.html',{'columns':columns,'rows':rows, 'elapsed_time':elapsed_time})
+        result = perform_query(db,query)
+        return render(request,'index.html',result)
 
 
 def perform_query(db,query):
     try:
         with connections[db].cursor() as cursor:
-
             start_time = time.time()
-            cursor.execute(query)
+            try:
+                cursor.execute(query)
 
-            if cursor.description is None:
-                return cursor.rowcount
-            if cursor.rowcount > 20:
-                rows = list(list(row) for row in cursor.fetchmany(20))
-            else:
-                rows = list(list(row) for row in cursor.fetchall())
+                if cursor.description is None:
+                    return cursor.rowcount
 
-            columns = [col[0] for col in cursor.description]
+                if cursor.rowcount > 20:
+                    rows = list(list(row) for row in cursor.fetchmany(20))
+                else:
+                    rows = list(list(row) for row in cursor.fetchall())
 
-            elapsed_time = round((time.time() - start_time)*1000,3)
+                columns = [col[0] for col in cursor.description]
+                elapsed_time = round((time.time() - start_time)*1000,3)
+                result = {'columns': columns, 'rows': rows, 'elapsed_time': elapsed_time}
+                return result
 
-            return columns, rows, elapsed_time
+            except Exception as e:
+                elapsed_time = round((time.time() - start_time) * 1000, 3)
+                error = {}
+                error['error'] = str(e.args)
+                error['elapsed_time'] = elapsed_time
+                return error
 
     except Exception as e:
-        return e
+        error = {}
+        error['error'] = str(e.args)
+        return error

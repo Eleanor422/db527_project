@@ -4,7 +4,7 @@ botocore==1.21.61
 cement==2.8.2
 certifi==2021.10.8
 charset-normalizer==2.0.7
-colorama==0.4.4
+colorama
 Django==3.2.8
 future==0.16.0
 gunicorn==20.1.0
@@ -24,3 +24,4 @@ termcolor==1.1.0
 typing-extensions==3.10.0.2
 urllib3==1.26.7
 wcwidth==0.1.9
+mysqlclient

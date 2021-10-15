@@ -9,11 +9,9 @@
 	<link rel="stylesheet" href="/static/css/animate.css">
 	<!-- Bootstrap  -->
 	<link rel="stylesheet" href="/static/css/bootstrap.css">
+	<link rel="stylesheet" href="/static/bootstrap-table/bootstrap-table.css">
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="/static/css/style.css">
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<link rel="stylesheet" href="/static/bootstrap-table/bootstrap-table.css">
-	<script src="/static/bootstrap-table/bootstrap-table.js"></script>
 	<link rel="shortcut icon" href="#">
 
 	</head>
@@ -27,7 +25,10 @@
 						<div class="col-md-12 col-md-offset-0">
 							<div class="animate-box">
 								<h2>Database: Instacart</h2>
-								<p class="breadcrumbs"><span>CS527</span></p>
+								<p>CS527 Team1</p>
+								<br>
+								<p class="breadcrumbs">Siyu Huang&emsp;&emsp;Qizhen(Justin) Ding&emsp;&emsp;Shuhan Shi<br>
+								Sihao Sun&emsp;&emsp;Zhihan Wang&emsp;&emsp;Yining Wang</p>
 							</div>
 						</div>
 					</div>
@@ -67,7 +68,7 @@
 
 
 	<div class="text-center">
-		<h3>Elapsed time:{{ elapsed_time }}ms</h3>
+		<h3>Elapsed time:&emsp;{{ elapsed_time }}&emsp;ms</h3>
 	</div>
 
 	<div class="text-center">
@@ -76,9 +77,9 @@
 		{% endif %}
 	</div>
 
-	<div class="table-responsive" style="margin: 100px;">
-
-		<table class="table table-bordered table-hover" id="tb">
+	<div id="output" class="table-responsive" style="margin: 100px;" >
+		{% if columns %}
+		<table class="table table-bordered table-hover" data-toggle="table" data-pagination="true">
 			<thead>
 				<tr>
 					{% for col in columns %}
@@ -95,7 +96,7 @@
 				{% endfor %}
 			</tbody>
 		</table>
-
+		{% endif %}
 	</div>
 
 
@@ -109,15 +110,7 @@
 	<script src="/static/js/jquery.waypoints.min.js"></script>
 	<!-- Main -->
 	<script src="/static/js/main.js"></script>
-
-	<script>
-    $("#tb").bootstrapTable({
-        pagination: true,
-        pageSize: 10,
-        paginationLoop: false,
-        pageList: [10, 20]
-    });
-	</script>
+	<script src="/static/bootstrap-table/bootstrap-table.js"></script>
 
 
 	</body>
